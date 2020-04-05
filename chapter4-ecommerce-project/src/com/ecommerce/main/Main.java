@@ -2,6 +2,7 @@ package com.ecommerce.main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,13 @@ import com.ecommerce.basket.BasketType;
 import com.ecommerce.basketitem.builder.BasketItemBuilder;
 import com.ecommerce.money.Currency;
 import com.ecommerce.money.Money;
+import com.ecommerce.payment.integrator.ClassifiedPaymentIntegrator;
+import com.ecommerce.payment.integrator.ExpertiseReportPaymentIntegrator;
+import com.ecommerce.payment.integrator.PaymentIntegrator;
+import com.ecommerce.payment.provider.PaymentProvider;
+import com.ecommerce.payment.provider.model.AssecoPaymentProvider;
+import com.ecommerce.payment.provider.model.IyzicoPaymentProvider;
+import com.ecommerce.payment.provider.model.PreviousPayment;
 import com.ecommerce.product.ClassifiedProduct;
 import com.ecommerce.product.ReportProduct;
 import com.ecommerce.product.impl.CarExpertiseReport;
@@ -51,7 +59,24 @@ public class Main {
 		shoppingChart.addBasketItem(classifiedbasketItem);
 		shoppingChart.addBasketItem(expertiseReportbasketItem);
 		
+		System.out.println("Alışveriş Sepetimiz");
 		printShoppingChart(shoppingChart);
+		
+		
+		
+		PaymentProvider iyzico = new IyzicoPaymentProvider(new HashMap<Integer, PreviousPayment>());
+		PaymentProvider asseco = new AssecoPaymentProvider(new HashMap<Integer, PreviousPayment>());
+		
+		PaymentIntegrator classifiedIntegrator = new ClassifiedPaymentIntegrator(asseco, BasketType.Classified);
+		PaymentIntegrator expertiseIntegrator = new ExpertiseReportPaymentIntegrator(iyzico, BasketType.CarExpertiseReport);
+
+		int chargeIdForClassified = classifiedIntegrator.makePayment(shoppingChart);
+		int chargeIdForExpertiseReport = expertiseIntegrator.makePayment(shoppingChart);
+		
+		System.out.println("Ödenmiş Faturalar");
+		System.out.println(asseco.loadInvoice(chargeIdForClassified));
+		System.out.println(iyzico.loadInvoice(chargeIdForExpertiseReport));
+		
 	}
 	
 	private static void printShoppingChart(ShoppingChart shoppingChart) {
@@ -60,6 +85,7 @@ public class Main {
 			System.out.println(basketItem);
 		}
 		
+		System.out.println();
 	}
 
 }
