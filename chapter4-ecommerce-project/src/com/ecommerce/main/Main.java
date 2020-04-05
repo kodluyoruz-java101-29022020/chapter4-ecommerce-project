@@ -30,6 +30,8 @@ public class Main {
 		Set<Doping> dopings = new HashSet<Doping>();
 		dopings.add(new Doping("Güncelim Dopingi", new Money(100, Currency.TL), DopingType.UptoDate));
 		ClassifiedProduct classified = new Classified("Araç ilanı", new Money(100000, Currency.TL), dopings);
+		((Classified)classified).setTitle("Sıfır araç temiz!");
+		((Classified)classified).setDescription("ALKKJFALSJLKDAJLSKJLAK JLAKSJLDA");
 		
 		
 		Set<ReportItem> extraServices = new HashSet<ReportItem>();
