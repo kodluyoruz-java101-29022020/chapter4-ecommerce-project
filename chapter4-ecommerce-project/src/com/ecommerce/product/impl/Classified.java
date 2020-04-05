@@ -52,4 +52,11 @@ public class Classified implements ClassifiedProduct {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "Classified [name=" + name + ", price=" + price + ", title=" + title + ", description=" + description
+				+ ", dopingList=" + dopingList + "]";
+	}
+
+	
 }

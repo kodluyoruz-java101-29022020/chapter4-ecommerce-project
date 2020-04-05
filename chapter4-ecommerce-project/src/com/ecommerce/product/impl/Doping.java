@@ -67,4 +67,11 @@ public class Doping implements Product {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Doping [name=" + name + ", price=" + price + ", type=" + type + "]";
+	}
+	
+	
 }

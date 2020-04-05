@@ -49,6 +49,15 @@ public class Main {
 		shoppingChart.addBasketItem(classifiedbasketItem);
 		shoppingChart.addBasketItem(expertiseReportbasketItem);
 		
+		printShoppingChart(shoppingChart);
+	}
+	
+	private static void printShoppingChart(ShoppingChart shoppingChart) {
+		
+		for(BasketItem basketItem : shoppingChart.getBasketItemList()) {
+			System.out.println(basketItem);
+		}
+		
 	}
 
 }

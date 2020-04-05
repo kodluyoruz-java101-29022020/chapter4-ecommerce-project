@@ -21,4 +21,10 @@ public class OTVTax implements Tax {
 	public Money getTaxValue() {
 		return this.value;
 	}
+
+	@Override
+	public String toString() {
+		return "OTVTax [name=" + name + ", value=" + value + "]";
+	}
+
 }

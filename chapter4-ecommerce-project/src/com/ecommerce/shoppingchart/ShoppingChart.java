@@ -33,4 +33,9 @@ public class ShoppingChart {
 	public void setBasketItemList(List<BasketItem> basketItemList) {
 		this.basketItemList = basketItemList;
 	}
+
+	@Override
+	public String toString() {
+		return "ShoppingChart [basketItemList=" + basketItemList + "]";
+	}
 }

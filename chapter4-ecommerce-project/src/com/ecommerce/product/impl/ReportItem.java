@@ -23,4 +23,10 @@ public class ReportItem implements Product {
 		return this.price;
 	}
 
+	@Override
+	public String toString() {
+		return "ReportItem [name=" + name + ", price=" + price + "]";
+	}
+
+	
 }

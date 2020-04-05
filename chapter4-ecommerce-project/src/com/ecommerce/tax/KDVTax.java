@@ -22,4 +22,10 @@ public class KDVTax implements Tax {
 		return this.value;
 	}
 
+	@Override
+	public String toString() {
+		return "KDVTax [name=" + name + ", value=" + value + "]";
+	}
+
+	
 }

@@ -52,4 +52,12 @@ public class CarExpertiseReport implements ReportProduct {
 	public void setExtraServices(Set<ReportItem> extraServices) {
 		this.extraServices = extraServices;
 	}
+
+	@Override
+	public String toString() {
+		return "CarExpertiseReport [name=" + name + ", price=" + price + ", packages=" + packages + ", extraServices="
+				+ extraServices + "]";
+	}
+	
+	
 }
